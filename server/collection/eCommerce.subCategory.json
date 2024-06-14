@@ -1,0 +1,450 @@
+[{
+  "_id": {
+    "$oid": "6653375393b4dacd7d560326"
+  },
+  "categoryId": {
+    "$oid": "66500cc293b4dacd7d560320"
+  },
+  "name": "mobile",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:21:23.791Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:21:23.791Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6653377593b4dacd7d560327"
+  },
+  "categoryId": {
+    "$oid": "66500cc293b4dacd7d560320"
+  },
+  "name": "computer",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:21:57.930Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:21:57.930Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6653378193b4dacd7d560328"
+  },
+  "categoryId": {
+    "$oid": "66500cc293b4dacd7d560320"
+  },
+  "name": "tv",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:22:09.328Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:22:09.328Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "665337fb93b4dacd7d560329"
+  },
+  "categoryId": {
+    "$oid": "66500cc293b4dacd7d560320"
+  },
+  "name": "hair-drayer",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:24:11.413Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:24:11.413Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "665338d093b4dacd7d56032a"
+  },
+  "categoryId": {
+    "$oid": "66500cc293b4dacd7d560320"
+  },
+  "name": "laptop",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:27:44.109Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:27:44.109Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "665339b593b4dacd7d56032b"
+  },
+  "categoryId": {
+    "$oid": "66500df693b4dacd7d560321"
+  },
+  "name": "pen",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:31:33.051Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:31:33.051Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "665339c193b4dacd7d56032c"
+  },
+  "categoryId": {
+    "$oid": "66500df693b4dacd7d560321"
+  },
+  "name": "pencil",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:31:45.155Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:31:45.155Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "665339d693b4dacd7d56032d"
+  },
+  "categoryId": {
+    "$oid": "66500df693b4dacd7d560321"
+  },
+  "name": "book",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:32:06.185Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:32:06.185Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "665339e193b4dacd7d56032e"
+  },
+  "categoryId": {
+    "$oid": "66500df693b4dacd7d560321"
+  },
+  "name": "eraser",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:32:17.768Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:32:17.768Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "665339ec93b4dacd7d56032f"
+  },
+  "categoryId": {
+    "$oid": "66500df693b4dacd7d560321"
+  },
+  "name": "sharpner",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:32:28.101Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:32:28.101Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66533a8593b4dacd7d560330"
+  },
+  "categoryId": {
+    "$oid": "66500f9493b4dacd7d560322"
+  },
+  "name": "dress",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:35:01.297Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:35:01.297Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66533b6893b4dacd7d560331"
+  },
+  "categoryId": {
+    "$oid": "66500f9493b4dacd7d560322"
+  },
+  "name": "footwear",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:38:48.013Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:38:48.013Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66533b7693b4dacd7d560332"
+  },
+  "categoryId": {
+    "$oid": "66500f9493b4dacd7d560322"
+  },
+  "name": "bottomwear",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:39:02.256Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:39:02.256Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66533b8593b4dacd7d560333"
+  },
+  "categoryId": {
+    "$oid": "66500f9493b4dacd7d560322"
+  },
+  "name": "kurta's",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:39:17.405Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:39:17.405Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66533b9f93b4dacd7d560334"
+  },
+  "categoryId": {
+    "$oid": "66500f9493b4dacd7d560322"
+  },
+  "name": "womans-western",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:39:43.027Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:39:43.027Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66533bc993b4dacd7d560335"
+  },
+  "categoryId": {
+    "$oid": "6650106d93b4dacd7d560323"
+  },
+  "name": "baby_hair_oil",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:40:24.960Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:40:24.960Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66533bd393b4dacd7d560336"
+  },
+  "categoryId": {
+    "$oid": "6650106d93b4dacd7d560323"
+  },
+  "name": "baby_shampoo",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:40:35.762Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:40:35.762Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66533bde93b4dacd7d560337"
+  },
+  "categoryId": {
+    "$oid": "6650106d93b4dacd7d560323"
+  },
+  "name": "baby_shoap",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:40:46.786Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:40:46.786Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66533bee93b4dacd7d560338"
+  },
+  "categoryId": {
+    "$oid": "6650106d93b4dacd7d560323"
+  },
+  "name": "baby_body_wash",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:41:02.380Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:41:02.380Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66533c0993b4dacd7d560339"
+  },
+  "categoryId": {
+    "$oid": "6650106d93b4dacd7d560323"
+  },
+  "name": "baby_massage_oil",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:41:29.815Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:41:29.815Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66533c1893b4dacd7d56033a"
+  },
+  "categoryId": {
+    "$oid": "6650108493b4dacd7d560324"
+  },
+  "name": "nackless",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:41:44.771Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:41:44.771Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66533c2693b4dacd7d56033b"
+  },
+  "categoryId": {
+    "$oid": "6650108493b4dacd7d560324"
+  },
+  "name": "braslete",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:41:58.259Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:41:58.259Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66533c3193b4dacd7d56033c"
+  },
+  "categoryId": {
+    "$oid": "6650108493b4dacd7d560324"
+  },
+  "name": "ring",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:42:09.550Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:42:09.550Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66533c3d93b4dacd7d56033d"
+  },
+  "categoryId": {
+    "$oid": "6650108493b4dacd7d560324"
+  },
+  "name": "earing",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:42:21.719Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:42:21.719Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66533c8093b4dacd7d56033e"
+  },
+  "categoryId": {
+    "$oid": "6650108493b4dacd7d560324"
+  },
+  "name": "anklet",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-26T13:43:28.169Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-26T13:43:28.169Z"
+  }
+}]

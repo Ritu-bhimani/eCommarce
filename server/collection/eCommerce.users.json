@@ -1,0 +1,65 @@
+[{
+  "_id": {
+    "$oid": "6650087993b4dacd7d56031b"
+  },
+  "name": "Amit",
+  "address": "surat",
+  "email": "amit@gmail.com",
+  "password": "amit123",
+  "mobile_no": {
+    "$numberLong": "9876543212"
+  },
+  "role": "buyer"
+},
+{
+  "_id": {
+    "$oid": "6650097d93b4dacd7d56031c"
+  },
+  "name": "raj",
+  "address": "vadodara",
+  "email": "raj@gmail.com",
+  "password": "raj123",
+  "mobile_no": {
+    "$numberLong": "98765499012"
+  },
+  "role": "seller"
+},
+{
+  "_id": {
+    "$oid": "6650099e93b4dacd7d56031d"
+  },
+  "name": "rutu",
+  "address": "vapi",
+  "email": "rutu@gmail.com",
+  "password": "rutu123",
+  "mobile_no": {
+    "$numberLong": "5678909876"
+  },
+  "role": "seller"
+},
+{
+  "_id": {
+    "$oid": "665009c593b4dacd7d56031e"
+  },
+  "name": "mayur",
+  "address": "rajkot",
+  "email": "mayur@gmail.com",
+  "password": "mayur123",
+  "mobile_no": {
+    "$numberLong": "9087656783"
+  },
+  "role": "buyer"
+},
+{
+  "_id": {
+    "$oid": "665009f093b4dacd7d56031f"
+  },
+  "name": "sagar",
+  "address": "ahamdabad",
+  "email": "sagar@gmail.com",
+  "password": "sagar123",
+  "mobile_no": {
+    "$numberLong": "8907654321"
+  },
+  "role": "buyer"
+}]

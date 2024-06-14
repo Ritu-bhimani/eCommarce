@@ -1,0 +1,249 @@
+{
+  "fruits": [
+    {
+      "id": "1",
+      "name": "Mango",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "4",
+      "image": "img/fruite-item-5.jpg",
+      "type": "Organic"
+    },
+    {
+      "id": "2",
+      "name": "Grapes",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "5",
+      "image": "img/fruite-item-5.jpg",
+      "type": "Fresh"
+    },
+    {
+      "id": "3",
+      "name": "Raspberries",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "4",
+      "image": "img/fruite-item-2.jpg",
+      "type": "Sales"
+    },
+    {
+      "id": "4",
+      "name": "Apricots",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "5",
+      "image": "img/fruite-item-4.jpg",
+      "type": "Discount"
+    },
+    {
+      "id": "5",
+      "name": "Banana",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "6",
+      "image": "img/fruite-item-3.jpg",
+      "type": "Expire"
+    },
+    {
+      "id": "6",
+      "name": "Oranges",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "6",
+      "image": "img/fruite-item-1.jpg",
+      "type": "Organic"
+    },
+    {
+      "id": "7",
+      "name": "Raspberries",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "5",
+      "image": "img/fruite-item-2.jpg",
+      "type": "Fresh"
+    },
+    {
+      "id": "8",
+      "name": "Grapes",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "5",
+      "image": "img/fruite-item-5.jpg",
+      "type": "Sales"
+    },
+    {
+      "id": "9",
+      "name": "Oranges",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": "4",
+      "image": "img/fruite-item-1.jpg",
+      "type": "Discount"
+    }
+  ],
+  "product": [
+    {
+      "id": "1",
+      "name": "Grapes",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 10,
+      "image": "img/fruite-item-5.jpg",
+      "type": "Organic"
+    },
+    {
+      "id": "2",
+      "name": "Grapes",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 12,
+      "image": "img/fruite-item-5.jpg",
+      "type": "Fresh"
+    },
+    {
+      "id": "3",
+      "name": "Raspberries",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 15,
+      "image": "img/fruite-item-2.jpg",
+      "type": "Sales"
+    },
+    {
+      "id": "4",
+      "name": "Apricots",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 20,
+      "image": "img/fruite-item-4.jpg",
+      "type": "Discount"
+    },
+    {
+      "id": "5",
+      "name": "Banana",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 13,
+      "image": "img/fruite-item-3.jpg",
+      "type": "Expire"
+    },
+    {
+      "id": "6",
+      "name": "Oranges",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 17,
+      "image": "img/fruite-item-1.jpg",
+      "type": "Organic"
+    },
+    {
+      "id": "7",
+      "name": "Raspberries",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 15,
+      "image": "img/fruite-item-2.jpg",
+      "type": "Fresh"
+    },
+    {
+      "id": "8",
+      "name": "Grapes",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 15,
+      "image": "img/fruite-item-5.jpg",
+      "type": "Sales"
+    },
+    {
+      "id": "9",
+      "name": "Oranges",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt",
+      "price": 14,
+      "image": "img/fruite-item-1.jpg",
+      "type": "Discount"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "1",
+      "name": "mango",
+      "p_id": 3,
+      "email": "amit14@gmail.com",
+      "reviews": "Organic",
+      "rating": "4"
+    },
+    {
+      "id": "3",
+      "name": "Raspberries",
+      "p_id": 5,
+      "email": "amit14@gmail.com",
+      "reviews": "Sales",
+      "rating": 4
+    },
+    {
+      "id": "5",
+      "name": "Banana",
+      "p_id": 7,
+      "email": "amit14@gmail.com",
+      "reviews": "Discount",
+      "rating": 4
+    },
+    {
+      "id": "f46c",
+      "name": "fgfhgh",
+      "email": "hjhjg@gmail.com",
+      "reviews": "ghvnbjkjb,n"
+    },
+    {
+      "id": "0f8b",
+      "name": "vbvhfh",
+      "email": "hjhjg@gmail.com",
+      "reviews": "vhfhv"
+    }
+  ],
+  "coupon": [
+    {
+      "id": "0ec0",
+      "coupon": "April24",
+      "persantage": 20,
+      "expiry": "2024-04-30"
+    },
+    {
+      "id": "1e7c",
+      "coupon": "May24",
+      "persantage": 15,
+      "expiry": "2024-04-30"
+    }
+  ],
+  "bestSeller": [
+    {
+      "id": "ee3e",
+      "name": "ghjghj",
+      "rating": 2
+    },
+    {
+      "id": "401e",
+      "name": "hjhj",
+      "rating": 2
+    },
+    {
+      "id": "6057",
+      "name": "hjh",
+      "rating": 3
+    },
+    {
+      "id": "25e3",
+      "name": "hjh",
+      "rating": 2
+    },
+    {
+      "id": "664b",
+      "name": "gjnbj",
+      "rating": 2
+    }
+  ],
+  "contacts": [
+    {
+      "id": "5c79",
+      "address": "gjgj",
+      "email": "hjhjg@gmail.com",
+      "phone": 1234567890
+    },
+    {
+      "id": "fd1f",
+      "address": "gjgj",
+      "email": "hjhjg@gmail.com",
+      "phone": 1234567890
+    },
+    {
+      "id": "fd59",
+      "address": "aaaaa",
+      "email": "amit14@gmail.com",
+      "phone": 11112345678
+    }
+  ]
+}

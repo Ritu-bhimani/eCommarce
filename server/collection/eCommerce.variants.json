@@ -1,0 +1,158 @@
+[{
+  "_id": {
+    "$oid": "6654698dad5304f0f80117cc"
+  },
+  "product_id": {
+    "$oid": "6653d5f60e3b6076995edfa5"
+  },
+  "name": "Kismis",
+  "attributes": [
+    {
+      "quantity": "500gm",
+      "price": 300,
+      "Speciality": "suitable for vegetarians",
+      "brand": "Nutraj"
+    },
+    {
+      "quantity": "1KG",
+      "price": "700",
+      "speciality": "vegetarians",
+      "brand": "Artisante"
+    }
+  ],
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-27T11:07:57.444Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T11:07:57.444Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66546a27ad5304f0f80117cd"
+  },
+  "product_id": {
+    "$oid": "6653d5120e3b6076995edfa2"
+  },
+  "attributes": [
+    {
+      "ram": "128GB",
+      "value": "6GB",
+      "price": 21000,
+      "stock": 10
+    }
+  ],
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-27T11:10:31.441Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T11:10:31.441Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66546acfad5304f0f80117ce"
+  },
+  "product_id": {
+    "$oid": "6653d5120e3b6076995edfa1"
+  },
+  "attributes": [
+    {
+      "size": "s",
+      "color": "white",
+      "price": 250,
+      "stock": 14
+    },
+    {
+      "size": "xl",
+      "color": "black",
+      "price": 250,
+      "stock": 10
+    },
+    {
+      "size": "xxl",
+      "color": "sky",
+      "price": 230,
+      "stock": 12
+    }
+  ],
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-27T11:13:19.583Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T11:13:19.583Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66546befad5304f0f80117cf"
+  },
+  "product_id": {
+    "$oid": "6653d5a20e3b6076995edfa3"
+  },
+  "attributes": [
+    {
+      "brand": "lacme",
+      "color": "maroon",
+      "price": 150,
+      "stock": 14
+    },
+    {
+      "brand": "nivea",
+      "color": "nude",
+      "price": 250,
+      "stock": 10
+    },
+    {
+      "brand": "mama earth",
+      "color": "red",
+      "price": 200,
+      "stock": 12
+    }
+  ],
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-27T11:18:07.590Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T11:18:07.590Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66546d17ad5304f0f80117d0"
+  },
+  "product_id": {
+    "$oid": "6653d5a20e3b6076995edfa4"
+  },
+  "attributes": [
+    {
+      "brand": "Hersheys",
+      "quantity": "30ml",
+      "price": 200,
+      "stock": 14
+    },
+    {
+      "brand": "Param",
+      "quantity": "50ml",
+      "price": 170,
+      "stock": 10
+    },
+    {
+      "brand": "striye",
+      "quantity": "40ml",
+      "price": 230,
+      "stock": 12
+    }
+  ],
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-27T11:23:03.669Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T11:23:03.669Z"
+  }
+}]

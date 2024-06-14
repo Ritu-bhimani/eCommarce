@@ -1,0 +1,75 @@
+[{
+  "_id": {
+    "$oid": "66500cc293b4dacd7d560320"
+  },
+  "name": "electronics",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "createdAt": {
+    "$date": "2024-05-27T00:34:26.805Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T00:34:26.805Z"
+  },
+  "is_Active": true
+},
+{
+  "_id": {
+    "$oid": "66500df693b4dacd7d560321"
+  },
+  "name": "stationery",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "createdAt": {
+    "$date": "2024-05-27T00:34:26.805Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T00:34:26.805Z"
+  },
+  "is_Active": true
+},
+{
+  "_id": {
+    "$oid": "66500f9493b4dacd7d560322"
+  },
+  "name": "fashion",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "createdAt": {
+    "$date": "2024-05-27T00:34:26.805Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T00:34:26.805Z"
+  },
+  "is_Active": true
+},
+{
+  "_id": {
+    "$oid": "6650106d93b4dacd7d560323"
+  },
+  "name": "baby products",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "createdAt": {
+    "$date": "2024-05-27T00:34:26.805Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T00:34:26.805Z"
+  },
+  "is_Active": true
+},
+{
+  "_id": {
+    "$oid": "6650108493b4dacd7d560324"
+  },
+  "name": "jewelry",
+  "photo": "https://picsum.photos/200",
+  "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,",
+  "createdAt": {
+    "$date": "2024-05-27T00:34:26.805Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T00:34:26.805Z"
+  },
+  "is_Active": true
+}]

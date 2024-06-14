@@ -1,0 +1,96 @@
+[{
+  "_id": {
+    "$oid": "6653d5120e3b6076995edfa1"
+  },
+  "subCategory_id": {
+    "$oid": "6653375393b4dacd7d560326"
+  },
+  "name": "T-Shirt",
+  "description": "We are selling our best health items to our cusomrts.",
+  "img": "https://picsum.photos/200/300.jpg",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-27T00:34:26.805Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T00:34:26.805Z"
+  },
+  "seller_id": "ObjectId('66500e0e6ccf453795725827')"
+},
+{
+  "_id": {
+    "$oid": "6653d5120e3b6076995edfa2"
+  },
+  "subCategoryId": {
+    "$oid": "6653377593b4dacd7d560327"
+  },
+  "name": "Redmi 12",
+  "description": "Health is very important for all humans. ",
+  "img": "https://picsum.photos/id/1/200/300",
+  "isActive": "false",
+  "createdAt": {
+    "$date": "2024-05-27T00:34:26.805Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T00:34:26.805Z"
+  },
+  "sellerId": "ObjectId('66500a956ccf453795725823')",
+  "seller_id": "ObjectId('66500d5c6ccf453795725824')"
+},
+{
+  "_id": {
+    "$oid": "6653d5a20e3b6076995edfa3"
+  },
+  "subCategory_id": {
+    "$oid": "6653378193b4dacd7d560328"
+  },
+  "name": "Lacme_100",
+  "description": "We are selling our best health items to our cusomrts.",
+  "img": "https://picsum.photos/200/300.jpg",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-27T00:36:50.098Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T00:36:50.098Z"
+  },
+  "seller_id": "ObjectId('66500d5c6ccf453795725825')"
+},
+{
+  "_id": {
+    "$oid": "6653d5a20e3b6076995edfa4"
+  },
+  "subCategoryId": {
+    "$oid": "665337fb93b4dacd7d560329"
+  },
+  "name": "Almond Shake",
+  "description": "Health is very important for all humans. ",
+  "img": "https://picsum.photos/id/1/200/300",
+  "isActive": "false",
+  "createdAt": {
+    "$date": "2024-05-27T00:36:50.098Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T00:36:50.098Z"
+  },
+  "seller_id": "ObjectId('66500e0e6ccf453795725826')"
+},
+{
+  "_id": {
+    "$oid": "6653d5f60e3b6076995edfa5"
+  },
+  "subCategory_id": {
+    "$oid": "665338d093b4dacd7d56032a"
+  },
+  "name": "Kismis",
+  "description": "We are selling our best health items to our cusomrts.",
+  "img": "https://picsum.photos/200/300.jpg",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-27T00:38:14.315Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T00:38:14.315Z"
+  },
+  "seller_id": "ObjectId('66500a956ccf453795725823')"
+}]

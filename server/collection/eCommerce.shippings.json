@@ -1,0 +1,95 @@
+[{
+  "_id": {
+    "$oid": "665476d4ad5304f0f80117dd"
+  },
+  "order_id": {
+    "$oid": "66546fd2ad5304f0f80117d1"
+  },
+  "category_id": {
+    "$oid": "66500cc293b4dacd7d560320"
+  },
+  "current_place": "surat",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-27T12:04:36.223Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T12:04:36.223Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66547704ad5304f0f80117de"
+  },
+  "order_id": {
+    "$oid": "66547146ad5304f0f80117d2"
+  },
+  "category_id": {
+    "$oid": "66500cc293b4dacd7d560321"
+  },
+  "current_place": "ahemdabad",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-27T12:05:24.411Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T12:05:24.411Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66547903ad5304f0f80117e1"
+  },
+  "order_id": {
+    "$oid": "6654721fad5304f0f80117d3"
+  },
+  "category_id": {
+    "$oid": "66500cc293b4dacd7d560322"
+  },
+  "current_place": "baroda",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-27T12:13:55.909Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T12:13:55.909Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6654792cad5304f0f80117e2"
+  },
+  "order_id": {
+    "$oid": "6654725aad5304f0f80117d4"
+  },
+  "category_id": {
+    "$oid": "66500cc293b4dacd7d560323"
+  },
+  "current_place": "surat",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-27T12:14:36.790Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T12:14:36.790Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66547960ad5304f0f80117e3"
+  },
+  "order_id": {
+    "$oid": "665472b7ad5304f0f80117d5"
+  },
+  "category_id": {
+    "$oid": "66500cc293b4dacd7d560324"
+  },
+  "current_place": "surat",
+  "isActive": "true",
+  "createdAt": {
+    "$date": "2024-05-27T12:15:28.303Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T12:15:28.303Z"
+  }
+}]
