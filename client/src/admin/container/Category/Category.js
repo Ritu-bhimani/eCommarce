@@ -63,8 +63,8 @@ function Category(props) {
         image: mixed().test(
             "fileFormat",
             "Unsupported Format",
-            value =>console.log(value)
-            // value => !value || (value && ["image/jpg", "image/jpeg", "image/png","image/avif"].includes(value.type))
+            // value =>console.log(value)
+            value => !value || (value && ["image/jpg", "image/jpeg", "image/png","image/avif"].includes(value.type))
         )
     });
 
