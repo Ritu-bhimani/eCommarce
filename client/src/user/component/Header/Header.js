@@ -9,13 +9,12 @@ import DarkModeIcon from '@mui/icons-material/DarkMode';
 function Header(props) {
 
     const cart = useSelector(state => state.cart);
-    console.log(cart);
+    // console.log(cart);
 
-    const cartQuantity = cart.cart.reduce((acc, v) => v.quantity + acc, 0)
-    console.log(cartQuantity);
+    // const cartQuantity = cart?.cart.reduce((acc, v) => v?.quantity + acc, 0)
 
     const themeContext = useContext(ThemeContext);
-    console.log(themeContext);
+    // console.log(themeContext);
 
     const handleTheme = () => {
         themeContext.toggleTheme(themeContext.theme)
@@ -69,9 +68,9 @@ function Header(props) {
                                 <button className={`btn-search btn border border-secondary btn-md-square ${themeContext.theme} rounded-circle bg-white me-4`} data-bs-toggle="modal" data-bs-target="#searchModal"><i className="fas fa-search text-primary" /></button>
                                 <NavLink to="/Cart" href="#" className="position-relative me-4 my-auto">
                                     <i className="fa fa-shopping-bag fa-2x" />
-                                    <span className="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style={{ top: '-5px', left: 15, height: 20, minWidth: 20 }}>
+                                    {/* <span className="position-absolute bg-secondary rounded-circle d-flex align-items-center justify-content-center text-dark px-1" style={{ top: '-5px', left: 15, height: 20, minWidth: 20 }}>
                                         {cartQuantity}
-                                    </span>
+                                    </span> */}
                                 </NavLink>
                                 <a href="#" className="my-auto">
                                     <i className="fas fa-user fa-2x" />

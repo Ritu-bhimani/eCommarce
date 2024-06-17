@@ -3,7 +3,7 @@ import { PrimaryButton, SecondaryButton } from './button.styled';
 
 function Button({ children, btnType = 'primary', btnDisabled = false, ...rest }) {
 
-    console.log(btnType);
+    // console.log(btnType);
 
     const ChechButton = () => {
 

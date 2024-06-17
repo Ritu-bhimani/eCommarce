@@ -83,13 +83,13 @@ function Home(props) {
     }, [])
 
     const facilities = useSelector(state => state.facilities)
-    console.log(facilities);
+    // console.log(facilities);
 
     const themeContext = useContext(ThemeContext);
-    console.log(themeContext);
+    // console.log(themeContext);
 
     const BestSellerContext = useContext(bestSellerContext);
-    console.log(BestSellerContext);
+    // console.log(BestSellerContext);
 
 
     return (
@@ -145,7 +145,7 @@ function Home(props) {
             <div className="container-fluid featurs py-5">
                 <div className="container py-5">
                     <div className="row g-4">                        {
-                            facilities.facilities.map((v) => (
+                            facilities?.facilities?.map((v) => (
                                 <div className="col-md-6 col-lg-3">
                                     <div className="featurs-item text-center rounded bg-light p-4">
                                         <div className="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
