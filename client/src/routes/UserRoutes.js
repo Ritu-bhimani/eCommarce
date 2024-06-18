@@ -15,6 +15,9 @@ import Review from '../user/container/Review/Review';
 import Counter from '../admin/container/Counter/Counter';
 import { useContext } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
+import Category from '../user/container/Category/Category';
+import Subcategory from '../user/container/Subcategory/Subcategory';
+import Product from '../user/container/Product/Product';
 
 function UserRoutes(props) {
 
@@ -40,6 +43,11 @@ function UserRoutes(props) {
         <Route exact path="/Contact" element={<Contact />} />
         <Route exact path="/Review" element={<Review />} />
         <Route exact path="/Counter" element={<Counter />} />
+        <Route exact path="/category" element={<Category />} />
+        <Route exact path="/category/:id" element={<Subcategory />} />
+        <Route exact path="/subcategory/:id" element={<Product />} />
+        <Route exact path="/subcategory" element={<Counter />} />
+        <Route exact path="/product" element={<Counter />} />
 
       </Routes>
 

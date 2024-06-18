@@ -8,7 +8,8 @@ export const fetchCategoryData = createAsyncThunk(
     async () => {
         try {
             const response = await axios.get(`${baseURL}/categories/list-categories`);
-            return response?.data?.categoryDetails?.data; // Assuming the response data contains the categories
+            console.log(response);
+            return response?.data?.data;
         } catch (err) {
             console.log(err);
             throw err;
@@ -35,8 +36,9 @@ export const editCategory = createAsyncThunk(
     'category/editCategory',
     async (categoryData) => {
         try {
-            const response = await axios.put(`${baseURL}/categories/edit-categories/${categoryData._id}`, categoryData);
-            return response.data; // Assuming the response data contains the updated category
+            console.log(categoryData, "categoryData._id");
+            const response = await axios.put(`${baseURL}/categories/edit-categories/${categoryData?._id}`, categoryData);
+            return response.data;
         } catch (err) {
             console.log(err);
             throw err;
@@ -75,7 +77,7 @@ const categorySlice = createSlice({
             })
             .addCase(fetchCategoryData.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.data = action.payload || []; // Ensure payload is not undefined
+                state.data = action.payload || [];
             })
             .addCase(fetchCategoryData.rejected, (state, action) => {
                 state.isLoading = false;
@@ -87,7 +89,7 @@ const categorySlice = createSlice({
             })
             .addCase(addCategory.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.data = [...state.data, action.payload]; // Use spread operator to ensure immutability
+                state.data = [...state.data, action.payload];
             })
             .addCase(addCategory.rejected, (state, action) => {
                 state.isLoading = false;

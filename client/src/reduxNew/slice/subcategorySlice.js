@@ -6,7 +6,7 @@
 //     'subCategories/add-subCategories',
 //     async (data) => {
 //         const response = await axios.post(BASE_URL + 'subCategories', data);
-       
+
 //         return response.data;
 //     }
 // )
@@ -96,7 +96,7 @@ export const fetchSubCategoryData = createAsyncThunk(
     async () => {
         try {
             const response = await axios.get(`${baseURL}/subCategories/list-subCategories`);
-            console.log(response?.data?.data);
+            console.log(response?.data?.data, "subCategoryList");
             return response?.data?.data; // Assuming the response data contains the categories
         } catch (err) {
             console.log(err);

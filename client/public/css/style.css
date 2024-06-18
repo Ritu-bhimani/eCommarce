@@ -575,3 +575,32 @@
 .dark a:hover {
     color: #679d06 !important;
 }
+
+
+/* -----------home------------ */
+.category .owl-next{
+    position: absolute;
+    top: 20px;
+    right: 0;
+    background-color: #81c408;
+    height: 25px;
+    color: #fff;
+    border-radius: 50%;
+    width: 25px;
+}
+.category .owl-prev{
+    position: absolute;
+    top: 20px;
+    left: 0;
+    background-color: #81c408;
+    height: 25px;
+    color: #fff;
+    border-radius: 50%;
+    width: 25px;
+}
+.subcategory-item{
+    display: none;
+}
+.category-item:hover .subcategory-item{
+    display: block;
+}

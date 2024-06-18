@@ -9,6 +9,7 @@ import { ThemeContext } from '../../../context/ThemeContext';
 import { bestSellerContext } from '../../../context/bestSellerContext';
 import { GET_BESTSELLER } from '../../../context/ActionType';
 import Button from '../../component/UI/Button/Button';
+import Category from '../Category/Category';
 
 function Home(props) {
 
@@ -94,6 +95,11 @@ function Home(props) {
 
     return (
         <div>
+            {/* ----------------------Category---------------------- */}
+            <div className='mt-5'>
+                <Category />
+            </div>
+
             {/* Hero Start */}
             <div className=
                 {`container-fluid py-5 mb-5 hero-header ${themeContext.theme === 'dark' ? 'hero-header-dark' : ''}`}
@@ -145,24 +151,27 @@ function Home(props) {
             <div className="container-fluid featurs py-5">
                 <div className="container py-5">
                     <div className="row g-4">                        {
-                            facilities?.facilities?.map((v) => (
-                                <div className="col-md-6 col-lg-3">
-                                    <div className="featurs-item text-center rounded bg-light p-4">
-                                        <div className="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
-                                            <i className="fas fa-car-side fa-3x text-white" />
-                                        </div>
-                                        <div className="featurs-content text-center">
-                                            <h5>{v.name}</h5>
-                                            <p className="mb-0">{v.description}</p>
-                                        </div>
+                        facilities?.facilities?.map((v) => (
+                            <div className="col-md-6 col-lg-3">
+                                <div className="featurs-item text-center rounded bg-light p-4">
+                                    <div className="featurs-icon btn-square rounded-circle bg-secondary mb-5 mx-auto">
+                                        <i className="fas fa-car-side fa-3x text-white" />
+                                    </div>
+                                    <div className="featurs-content text-center">
+                                        <h5>{v.name}</h5>
+                                        <p className="mb-0">{v.description}</p>
                                     </div>
                                 </div>
-                            ))
-                        }
+                            </div>
+                        ))
+                    }
                     </div>
                 </div>
             </div>
             {/* Featurs Section End */}
+
+
+
             {/* Fruits Shop Start*/}
             <div className="container-fluid fruite py-5">
                 <div className="container py-5">
@@ -1055,7 +1064,7 @@ function Home(props) {
                 </div>
             </div>
             {/* Tastimonial End */}
-        </div >
+        </div>
 
     );
 }

@@ -84,6 +84,11 @@ function Header(props) {
                             </div>
                         </div>
                     </nav>
+                    {/* <div className='d-flex mb-2'>
+                        <NavLink to='/category' className="nav-item nav-link active">Category</NavLink>
+                        <NavLink to='/subcategory' className="nav-item nav-link active">Subcategory</NavLink>
+                        <NavLink to='/product' className="nav-item nav-link active">Product</NavLink>
+                    </div> */}
                 </div>
             </div>
             {/* Navbar End */}

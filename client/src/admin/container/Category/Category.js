@@ -22,8 +22,8 @@ function Category(props) {
     const [data, setData] = useState([]);
     const [update, setUpdate] = useState(null);
     const dispatch = useDispatch();
-    const categoryList = useSelector((state) => state);
-    // console.log(categoryList);
+    const categoryList = useSelector((state) => state?.categoryDetails?.data);
+    console.log(categoryList);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -35,21 +35,22 @@ function Category(props) {
         setUpdate(null);
     };
 
-    const getData = async () => {
-        const response = await fetch(`${baseURL}/categories/list-categories`);
-        const res = await response.json();
-        setData(res.data);
-    };
+    // const getData = async () => {
+    //     const response = await fetch(`${baseURL}/categories/list-categories`);
+    //     const res = await response.json();
+    //     setData(res.data);
+    // };
 
     useEffect(() => {
-        getData();
+        dispatch(fetchCategoryData())
+        // getData();
     }, []);
 
     const handleAdd = async (formData) => {
         try {
             const response = await axios.post(`${baseURL}/categories/add-categories`, formData);
             console.log(response.data);
-            getData();  // Ensure data is refreshed after adding
+            // getData(); 
             return response.data;
         } catch (err) {
             console.log(err);
@@ -60,12 +61,27 @@ function Category(props) {
     let categorySchema = object({
         name: string().required("Please enter name"),
         description: string().required("Please enter description").min(5, "Please enter minimum 5 characters"),
-        image: mixed().test(
-            "fileFormat",
-            "Unsupported Format",
-            // value =>console.log(value)
-            value => !value || (value && ["image/jpg", "image/jpeg", "image/png","image/avif"].includes(value.type))
-        )
+        image: mixed().required("image upload required")
+            .test(
+                "size",
+                "Unsupported size",
+                (value) => {
+                    if (value?.size) {
+                        return value?.size <= 1024 * 1024 * 2
+                    }
+                    return true
+                }
+            )
+            .test(
+                "fileFormat",
+                "Unsupported Format",
+                (value) => {
+                    if (value?.type) {
+                        return ["image/jpg", "image/jpeg", "image/png", "image/avif", "application/pdf"]?.includes(value?.type)
+                    }
+                    return true
+                }
+            ),
     });
 
     const formik = useFormik({
@@ -86,7 +102,7 @@ function Category(props) {
             console.log(values);
 
             if (update) {
-                handleUpdateData(formData);
+                handleUpdateData(values);
             } else {
                 handleAdd(formData);
             }
@@ -99,40 +115,43 @@ function Category(props) {
     const { handleSubmit, handleChange, handleBlur, setFieldValue, errors, touched, values } = formik;
 
     const handleUpdateData = async (data) => {
+        console.log(data);
         dispatch(editCategory(data));
-        getData();
+        // getData();
     };
 
     const handleDelete = async (data) => {
         dispatch(deleteCategory(data?._id));
-        getData();
+        // getData();
     };
 
     const handleEdit = (data) => {
         // formik.setValues(data);
-        setFieldValue("name",data.name)
-        setFieldValue("description",data.description)
-        setFieldValue("image",data.image.url)
-        console.log(data.image.url,"data");
+        console.log(data);
+        setFieldValue("_id", data?._id)
+        setFieldValue("name", data.name)
+        setFieldValue("description", data.description)
+        setFieldValue("image", data.image)
+        console.log(data.image.url, "data");
         setOpen(true);
         setUpdate(data);
     };
 
     const columns = [
-        { field: 'name', headerName: 'Name', width: 150 },
-        { field: 'description', headerName: 'Description', flex: 1 },
         {
             field: 'image',
             headerName: 'Image',
             width: 150,
             renderCell: (params) => (
                 <img
-                    src={params.row.image.url}  
+                    src={params.row.image.url}
                     alt={params.row.name}
                     style={{ width: '40px', height: '40px' }}
                 />
             ),
         },
+        { field: 'name', headerName: 'Name', width: 150 },
+        { field: 'description', headerName: 'Description', flex: 1 },
         {
             field: 'Action',
             headerName: 'Action',
@@ -153,6 +172,7 @@ function Category(props) {
         dispatch(fetchCategoryData());
     }, [dispatch]);
 
+    console.log(values);
     return (
         <div>
             <React.Fragment>
@@ -191,6 +211,7 @@ function Category(props) {
                                 error={errors.description && touched.description ? true : false}
                                 helperText={errors.description && touched.description ? errors.description : ""}
                             />
+
                             <input
                                 id="image"
                                 name="image"
@@ -202,6 +223,13 @@ function Category(props) {
                             {errors.image && touched.image && (
                                 <div style={{ color: 'red' }}>{errors.image}</div>
                             )}
+                            {values?.image &&
+                                <img
+                                    src={values?.image?.url ? values?.image?.url : URL.createObjectURL(values?.image)}
+                                    alt={values?.name}
+                                    style={{ width: '40px', height: '40px' }}
+                                />
+                            }
                             <DialogActions>
                                 <Button onClick={handleClose}>Cancel</Button>
                                 <Button type="submit">{update ? 'Update' : 'Add'}</Button>
@@ -213,7 +241,7 @@ function Category(props) {
 
             <div style={{ height: 400, width: '100%' }}>
                 <DataGrid
-                    rows={data}
+                    rows={categoryList}
                     columns={columns}
                     getRowId={(row) => row._id}
                     initialState={{
