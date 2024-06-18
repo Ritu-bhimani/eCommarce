@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFacilities } from '../../../redux/action/facilities.action';
 import { ThemeContext } from '../../../context/ThemeContext';
@@ -10,8 +11,12 @@ import { bestSellerContext } from '../../../context/bestSellerContext';
 import { GET_BESTSELLER } from '../../../context/ActionType';
 import Button from '../../component/UI/Button/Button';
 import Category from '../Category/Category';
+import { fetchCategoryData } from '../../../reduxNew/slice/categorySlice';
+import { fetchSubCategoryData } from '../../../reduxNew/slice/subcategorySlice';
 
 function Home(props) {
+    const [subcategoriesData, setsubcategoriesData] = useState([])
+    const [selectedCategory, setSelectedCategory] = useState("")
 
     const testimonialOption = {
         autoplay: true,
@@ -78,10 +83,27 @@ function Home(props) {
     }
 
     const dispatch = useDispatch()
+    const category = useSelector((state) => state?.categoryDetails?.data)
+    const subCategoryList = useSelector((state) => state?.subcategoryDetails?.data)
+
+    useEffect(() => {
+        const filteredSubcategory = subCategoryList.filter((item) => {
+            return (
+                item.category_id == selectedCategory
+            )
+        })
+
+        setsubcategoriesData(filteredSubcategory)
+
+        console.log("filteredSubcategory: ", filteredSubcategory);
+    }, [selectedCategory])
 
     useEffect(() => {
         dispatch(getFacilities())
+        dispatch(fetchCategoryData())
+        dispatch(fetchSubCategoryData())
     }, [])
+
 
     const facilities = useSelector(state => state.facilities)
     // console.log(facilities);
@@ -182,31 +204,13 @@ function Home(props) {
                             </div>
                             <div className="col-lg-8 text-end">
                                 <ul className="nav nav-pills d-inline-flex text-center mb-5">
-                                    <li className="nav-item">
-                                        <a className="d-flex m-2 py-2 bg-light rounded-pill active" data-bs-toggle="pill" href="#tab-1">
-                                            <span className="text-dark" style={{ width: 130 }}>All Products</span>
-                                        </a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="d-flex py-2 m-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-2">
-                                            <span className="text-dark" style={{ width: 130 }}>Vegetables</span>
-                                        </a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-3">
-                                            <span className="text-dark" style={{ width: 130 }}>Fruits</span>
-                                        </a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-4">
-                                            <span className="text-dark" style={{ width: 130 }}>Bread</span>
-                                        </a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="d-flex m-2 py-2 bg-light rounded-pill" data-bs-toggle="pill" href="#tab-5">
-                                            <span className="text-dark" style={{ width: 130 }}>Meat</span>
-                                        </a>
-                                    </li>
+                                    {category.map((item) => (
+                                        <li className="nav-item" onClick={() => setSelectedCategory(item._id)}>
+                                            <p className="d-flex m-2 py-2 bg-light rounded-pill active" data-bs-toggle="pill" href="#tab-1">
+                                                <span className="text-dark" style={{ width: 130 }}>{item.name}</span>
+                                            </p>
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                         </div>
@@ -215,143 +219,48 @@ function Home(props) {
                                 <div className="row g-4">
                                     <div className="col-lg-12">
                                         <div className="row g-4">
-                                            <div className="col-md-6 col-lg-4 col-xl-3">
-                                                <div className="rounded position-relative fruite-item">
-                                                    <div className="fruite-img">
-                                                        <img src="img/fruite-item-5.jpg" className="img-fluid w-100 rounded-top" alt />
-                                                    </div>
-                                                    <div className="text-white bg-secondary px-3 py-1 rounded position-absolute" style={{ top: 10, left: 10 }}>Fruits</div>
-                                                    <div className="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                        <h4>Grapes</h4>
-                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                        <div className="d-flex justify-content-between flex-lg-wrap">
-                                                            <p className={`text-dark fs-5 fw-bold mb-0 ${themeContext.theme === 'dark' ? 'text-white' : ''}`}>$4.99 / kg</p>
-                                                            <Button type='Base'>
-                                                                <i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart
-                                                            </Button>
+                                            {selectedCategory ? subcategoriesData.map((v) => (
+                                                <div className="col-md-6 col-lg-4 col-xl-3">
+                                                    <Link to={`/Shop/${v._id}`}>
+                                                        <div className="rounded position-relative fruite-item">
+                                                            <div className="fruite-img">
+                                                                <img src={`${v?.image?.url}`} className="img-fluid w-100 rounded-top" alt />
+                                                            </div>
+                                                            <div className="text-white bg-secondary px-3 py-1 rounded position-absolute" style={{ top: 10, left: 10 }}>Fruits</div>
+                                                            <div className="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                                <h4>{v.name}</h4>
+                                                                <p>{v.description.slice(0, 80) + '...'}</p>
+                                                                {/* <div className="d-flex justify-content-between flex-lg-wrap">
+                                                                    <p className={`text-dark fs-5 fw-bold mb-0 ${themeContext.theme === 'dark' ? 'text-white' : ''}`}>$4.99 / kg</p>
+                                                                    <Button type='Base'>
+                                                                        <i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart
+                                                                    </Button> 
+                                                                </div> */}
+                                                            </div>
+                                                        </div>
+                                                    </Link>
+                                                </div>
+                                            )) : category.map((v) => (
+                                                <div className="col-md-6 col-lg-4 col-xl-3">
+                                                    {console.log(v, "v")}
+                                                    <div className="rounded position-relative fruite-item">
+                                                        <div className="fruite-img">
+                                                            <img src={`${v?.image?.url}`} className="img-fluid w-100 rounded-top" alt style={{ height: "200px" }} />
+                                                        </div>
+                                                        <div className="text-white bg-secondary px-3 py-1 rounded position-absolute" style={{ top: 10, left: 10 }}>Fruits</div>
+                                                        <div className="p-4 border border-secondary border-top-0 rounded-bottom">
+                                                            <h4>{v.name}</h4>
+                                                            <p>{v.description.slice(0, 80) + '...'}</p>
+                                                            {/* <div className="d-flex justify-content-between flex-lg-wrap">
+                                                                <p className={`text-dark fs-5 fw-bold mb-0 ${themeContext.theme === 'dark' ? 'text-white' : ''}`}>$4.99 / kg</p>
+                                                                <Button type='Base'>
+                                                                    <i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart
+                                                                </Button>
+                                                            </div> */}
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div className="col-md-6 col-lg-4 col-xl-3">
-                                                <div className="rounded position-relative fruite-item">
-                                                    <div className="fruite-img">
-                                                        <img src="img/fruite-item-5.jpg" className="img-fluid w-100 rounded-top" alt />
-                                                    </div>
-                                                    <div className="text-white bg-secondary px-3 py-1 rounded position-absolute" style={{ top: 10, left: 10 }}>Fruits</div>
-                                                    <div className="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                        <h4>Grapes</h4>
-                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                        <div className="d-flex justify-content-between flex-lg-wrap">
-                                                            <p className={`text-dark fs-5 fw-bold mb-0 ${themeContext.theme === 'dark' ? 'text-white' : ''}`}>$4.99 / kg</p>
-                                                            <Button type='Base'>
-                                                                <i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart
-                                                            </Button>                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6 col-lg-4 col-xl-3">
-                                                <div className="rounded position-relative fruite-item">
-                                                    <div className="fruite-img">
-                                                        <img src="img/fruite-item-2.jpg" className="img-fluid w-100 rounded-top" alt />
-                                                    </div>
-                                                    <div className="text-white bg-secondary px-3 py-1 rounded position-absolute" style={{ top: 10, left: 10 }}>Fruits</div>
-                                                    <div className="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                        <h4>Raspberries</h4>
-                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                        <div className="d-flex justify-content-between flex-lg-wrap">
-                                                            <p className={`text-dark fs-5 fw-bold mb-0 ${themeContext.theme === 'dark' ? 'text-white' : ''}`}>$4.99 / kg</p>
-                                                            <Button type='Base'>
-                                                                <i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart
-                                                            </Button>                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6 col-lg-4 col-xl-3">
-                                                <div className="rounded position-relative fruite-item">
-                                                    <div className="fruite-img">
-                                                        <img src="img/fruite-item-4.jpg" className="img-fluid w-100 rounded-top" alt />
-                                                    </div>
-                                                    <div className="text-white bg-secondary px-3 py-1 rounded position-absolute" style={{ top: 10, left: 10 }}>Fruits</div>
-                                                    <div className="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                        <h4>Apricots</h4>
-                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                        <div className="d-flex justify-content-between flex-lg-wrap">
-                                                            <p className={`text-dark fs-5 fw-bold mb-0 ${themeContext.theme === 'dark' ? 'text-white' : ''}`}>$4.99 / kg</p>
-                                                            <Button type='Base'>
-                                                                <i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart
-                                                            </Button>                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6 col-lg-4 col-xl-3">
-                                                <div className="rounded position-relative fruite-item">
-                                                    <div className="fruite-img">
-                                                        <img src="img/fruite-item-3.jpg" className="img-fluid w-100 rounded-top" alt />
-                                                    </div>
-                                                    <div className="text-white bg-secondary px-3 py-1 rounded position-absolute" style={{ top: 10, left: 10 }}>Fruits</div>
-                                                    <div className="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                        <h4>Banana</h4>
-                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                        <div className="d-flex justify-content-between flex-lg-wrap">
-                                                            <p className={`text-dark fs-5 fw-bold mb-0 ${themeContext.theme === 'dark' ? 'text-white' : ''}`}>$4.99 / kg</p>
-                                                            <Button type='Base'>
-                                                                <i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart
-                                                            </Button>                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6 col-lg-4 col-xl-3">
-                                                <div className="rounded position-relative fruite-item">
-                                                    <div className="fruite-img">
-                                                        <img src="img/fruite-item-1.jpg" className="img-fluid w-100 rounded-top" alt />
-                                                    </div>
-                                                    <div className="text-white bg-secondary px-3 py-1 rounded position-absolute" style={{ top: 10, left: 10 }}>Fruits</div>
-                                                    <div className="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                        <h4>Oranges</h4>
-                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                        <div className="d-flex justify-content-between flex-lg-wrap">
-                                                            <p className={`text-dark fs-5 fw-bold mb-0 ${themeContext.theme === 'dark' ? 'text-white' : ''}`}>$4.99 / kg</p>
-                                                            <Button type='Base'>
-                                                                <i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart
-                                                            </Button>                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6 col-lg-4 col-xl-3">
-                                                <div className="rounded position-relative fruite-item">
-                                                    <div className="fruite-img">
-                                                        <img src="img/fruite-item-2.jpg" className="img-fluid w-100 rounded-top" alt />
-                                                    </div>
-                                                    <div className="text-white bg-secondary px-3 py-1 rounded position-absolute" style={{ top: 10, left: 10 }}>Fruits</div>
-                                                    <div className="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                        <h4>Raspberries</h4>
-                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                        <div className="d-flex justify-content-between flex-lg-wrap">
-                                                            <p className={`text-dark fs-5 fw-bold mb-0 ${themeContext.theme === 'dark' ? 'text-white' : ''}`}>$4.99 / kg</p>
-                                                            <Button type='Base'>
-                                                                <i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart
-                                                            </Button>                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="col-md-6 col-lg-4 col-xl-3">
-                                                <div className="rounded position-relative fruite-item">
-                                                    <div className="fruite-img">
-                                                        <img src="img/fruite-item-5.jpg" className="img-fluid w-100 rounded-top" alt />
-                                                    </div>
-                                                    <div className="text-white bg-secondary px-3 py-1 rounded position-absolute" style={{ top: 10, left: 10 }}>Fruits</div>
-                                                    <div className="p-4 border border-secondary border-top-0 rounded-bottom">
-                                                        <h4>Grapes</h4>
-                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt</p>
-                                                        <div className="d-flex justify-content-between flex-lg-wrap">
-                                                            <p className={`text-dark fs-5 fw-bold mb-0 ${themeContext.theme === 'dark' ? 'text-white' : ''}`}>$4.99 / kg</p>
-                                                            <Button type='Base'>
-                                                                <i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart
-                                                            </Button>                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            ))}
                                         </div>
                                     </div>
                                 </div>
