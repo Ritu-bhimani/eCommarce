@@ -34,12 +34,19 @@ export const addCategory = createAsyncThunk(
 // Edit category
 export const editCategory = createAsyncThunk(
     'category/editCategory',
-    async (categoryData) => {
+    // async (data) => {
+    async ({ formData, id }) => {
         try {
-            console.log(categoryData, "categoryData._id");
-            const response = await axios.put(`${baseURL}/categories/edit-categories/${categoryData?._id}`, categoryData);
+            // console.log(data, "formData._id");
+            const response = await axios.put(`${baseURL}/categories/edit-categories/${id}`, formData, {
+                // const response = await axios.put(`${baseURL}/categories/edit-categories/${data?._id}`, data, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            });
             return response.data;
         } catch (err) {
+            console.log(err, "responseresponse");
             console.log(err);
             throw err;
         }
@@ -100,6 +107,7 @@ const categorySlice = createSlice({
                 state.error = null;
             })
             .addCase(editCategory.fulfilled, (state, action) => {
+                console.log(action, state, "action");
                 state.isLoading = false;
                 const index = state.data?.findIndex(category => category?._id === action?.payload?._id);
                 if (index !== -1) {

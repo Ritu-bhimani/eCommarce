@@ -56,14 +56,14 @@ const addCategory = async (req, res) => {
         // console.log(req.file);
         // console.log(req.body, "LLLLLLL");
 
-        const fileRes=await uploadfile(req.file.path,"category")
+        const fileRes = await uploadfile(req.file.path, "category")
         // console.log(fileRes);
 
         const category = await Categories.create({
             ...req.body,
-            image:{
-                public_id:fileRes.public_id,
-                url:fileRes.url
+            image: {
+                public_id: fileRes.public_id,
+                url: fileRes.url
             }
         })
         // const category = new Categories(req.body);
@@ -117,19 +117,48 @@ const deleteCategory = async (req, res) => {
 }
 const putCategory = async (req, res) => {
     try {
-        // console.log(req.params.id, req.body);
-        const category = await Categories.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
-        if (!category) {
-            res.status(400).json({
-                success: false,
-                message: "Category data not found"
+        console.log(req.body);
+
+        if (req.file) {
+            console.log(req.file, "new upadate");
+            const fileRes = await uploadfile(req.file.path, "category")
+
+            const category = await Categories.findByIdAndUpdate(req.params.id, {
+                ...req.body,
+                image: {
+                    public_id: fileRes.public_id,
+                    url: fileRes.url
+                }
+            }, { new: true, runValidators: true }
+            )
+            console.log(category, "new upadate");
+            if (!category) {
+                res.status(400).json({
+                    success: false,
+                    message: "Category data not found"
+                })
+            }
+            res.status(200).json({
+                success: true,
+                message: "Category updated.",
+                data: category
+            })
+        } else {
+
+            console.log("old category");
+            const category = await Categories.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+            if (!category) {
+                res.status(400).json({
+                    success: false,
+                    message: "Category data not found"
+                })
+            }
+            res.status(200).json({
+                success: true,
+                message: "Category updated.",
+                data: category
             })
         }
-        res.status(200).json({
-            success: true,
-            message: "Category updated.",
-            data: category
-        })
     } catch (error) {
         res.status(500).json({
             success: false,

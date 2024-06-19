@@ -7,7 +7,7 @@ const routes = express.Router()
 
 routes.get(
     '/list-categories',
-    categoriesController.listCategories    
+    categoriesController.listCategories
 )
 
 routes.get(
@@ -17,15 +17,16 @@ routes.get(
 routes.post(
     '/add-categories',
     upload.single('image'),
-    categoriesController.addCategory    
+    categoriesController.addCategory
 )
 routes.delete(
     '/delete-categories/:id',
-    categoriesController.deleteCategory    
+    categoriesController.deleteCategory
 )
 routes.put(
     '/edit-categories/:id',
-    categoriesController.putCategory    
+    upload.single('image'),
+    categoriesController.putCategory
 )
 
-module.exports=routes
+module.exports = routes

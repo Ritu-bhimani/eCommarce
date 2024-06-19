@@ -102,7 +102,8 @@ function Category(props) {
             console.log(values);
 
             if (update) {
-                handleUpdateData(values);
+                // handleUpdateData(values);
+                handleUpdateData(formData, values?._id);
             } else {
                 handleAdd(formData);
             }
@@ -114,15 +115,13 @@ function Category(props) {
 
     const { handleSubmit, handleChange, handleBlur, setFieldValue, errors, touched, values } = formik;
 
-    const handleUpdateData = async (data) => {
-        console.log(data);
-        dispatch(editCategory(data));
-        // getData();
+    const handleUpdateData = async (formData, id) => {
+        // dispatch(editCategory(values));
+        dispatch(editCategory({ formData, id }));
     };
 
     const handleDelete = async (data) => {
         dispatch(deleteCategory(data?._id));
-        // getData();
     };
 
     const handleEdit = (data) => {
