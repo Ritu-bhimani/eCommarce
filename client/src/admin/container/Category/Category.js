@@ -9,7 +9,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { object, string, mixed } from 'yup';
 import { useFormik } from 'formik';
 import { DataGrid } from '@mui/x-data-grid';
-import { IconButton } from '@mui/material';
+import { CircularProgress, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,11 +19,12 @@ import { baseURL } from '../../../utils/baseURL';
 
 function Category(props) {
     const [open, setOpen] = useState(false);
-    const [data, setData] = useState([]);
     const [update, setUpdate] = useState(null);
     const dispatch = useDispatch();
     const categoryList = useSelector((state) => state?.categoryDetails?.data);
-    console.log(categoryList);
+    // const {data,isLoading} = useSelector((state) => state?.categoryDetails);
+    const isLoading = useSelector((state) => state?.categoryDetails?.isLoading);
+    console.log(isLoading);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -35,22 +36,11 @@ function Category(props) {
         setUpdate(null);
     };
 
-    // const getData = async () => {
-    //     const response = await fetch(`${baseURL}/categories/list-categories`);
-    //     const res = await response.json();
-    //     setData(res.data);
-    // };
-
-    useEffect(() => {
-        dispatch(fetchCategoryData())
-        // getData();
-    }, []);
 
     const handleAdd = async (formData) => {
         try {
             const response = await axios.post(`${baseURL}/categories/add-categories`, formData);
             console.log(response.data);
-            // getData(); 
             return response.data;
         } catch (err) {
             console.log(err);
@@ -102,8 +92,8 @@ function Category(props) {
             console.log(values);
 
             if (update) {
-                // handleUpdateData(values);
-                handleUpdateData(formData, values?._id);
+                handleUpdateData(values);
+                // handleUpdateData(formData, values?._id);
             } else {
                 handleAdd(formData);
             }
@@ -115,9 +105,9 @@ function Category(props) {
 
     const { handleSubmit, handleChange, handleBlur, setFieldValue, errors, touched, values } = formik;
 
-    const handleUpdateData = async (formData, id) => {
-        // dispatch(editCategory(values));
-        dispatch(editCategory({ formData, id }));
+    const handleUpdateData = async (values) => {
+        dispatch(editCategory(values));
+        // dispatch(editCategory({ formData, id }));
     };
 
     const handleDelete = async (data) => {
@@ -239,18 +229,25 @@ function Category(props) {
             </React.Fragment>
 
             <div style={{ height: 400, width: '100%' }}>
-                <DataGrid
-                    rows={categoryList}
-                    columns={columns}
-                    getRowId={(row) => row._id}
-                    initialState={{
-                        pagination: {
-                            paginationModel: { page: 0, pageSize: 5 },
-                        },
-                    }}
-                    pageSizeOptions={[5, 10]}
-                    checkboxSelection
-                />
+                {isLoading === true ?
+                    <div className='d-flex justify-content-center align-items-center'>
+
+                        <CircularProgress />
+                    </div>
+                    :
+                    <DataGrid
+                        rows={categoryList}
+                        columns={columns}
+                        getRowId={(row) => row._id}
+                        initialState={{
+                            pagination: {
+                                paginationModel: { page: 0, pageSize: 5 },
+                            },
+                        }}
+                        pageSizeOptions={[5, 10]}
+                        checkboxSelection
+                    />}
+
             </div>
         </div>
     );

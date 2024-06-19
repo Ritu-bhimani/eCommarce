@@ -1,15 +1,17 @@
+
+
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { baseURL } from "../../utils/baseURL";
 
 // Fetch category data
-export const fetchCategoryData = createAsyncThunk(
-    'category/fetchCategoryData',
+export const fetchSubCategoryData = createAsyncThunk(
+    'subCategories/fetchSubCategoryData',
     async () => {
         try {
-            const response = await axios.get(`${baseURL}/categories/list-categories`);
-            console.log(response);
-            return response?.data?.data;
+            const response = await axios.get(`${baseURL}/subCategories/list-subCategories`);
+            console.log(response?.data?.data, "subCategoryList");
+            return response?.data?.data; // Assuming the response data contains the categories
         } catch (err) {
             console.log(err);
             throw err;
@@ -18,11 +20,11 @@ export const fetchCategoryData = createAsyncThunk(
 );
 
 // Add category
-export const addCategory = createAsyncThunk(
-    'category/addCategory',
+export const addSubCategory = createAsyncThunk(
+    'subCategories/addCategory',
     async (categoryData) => {
         try {
-            const response = await axios.post(`${baseURL}/categories/add-categories`, categoryData);
+            const response = await axios.post(`${baseURL}/subCategories/add-subCategories`, categoryData);
             return response.data; // Assuming the response data contains the newly added category
         } catch (err) {
             console.log(err);
@@ -32,18 +34,12 @@ export const addCategory = createAsyncThunk(
 );
 
 // Edit category
-export const editCategory = createAsyncThunk(
-    'category/editCategory',
-    async (data) => {
-        // async ({ formData, id }) => {
+export const editSubCategory = createAsyncThunk(
+    'subCategories/editCategory',
+    async (categoryData) => {
         try {
-            // const response = await axios.put(`${baseURL}/categories/edit-categories/${id}`, formData, {
-            const response = await axios.put(`${baseURL}/categories/edit-categories/${data?._id}`, data, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                }
-            });
-            return response.data;
+            const response = await axios.put(`${baseURL}/subCategories/edit-subCategories/${categoryData._id}`, categoryData);
+            return response.data; // Assuming the response data contains the updated category
         } catch (err) {
             console.log(err);
             throw err;
@@ -52,11 +48,11 @@ export const editCategory = createAsyncThunk(
 );
 
 // Delete category
-export const deleteCategory = createAsyncThunk(
-    'category/deleteCategory',
+export const deleteSubCategory = createAsyncThunk(
+    'subCategories/deleteCategory',
     async (categoryId) => {
         try {
-            const response = await axios.delete(`${baseURL}/categories/delete-categories/${categoryId}`);
+            const response = await axios.delete(`${baseURL}/subCategories/delete-subCategories/${categoryId}`);
             return { _id: categoryId }; // Returning the id of the deleted category
         } catch (err) {
             console.log(err);
@@ -66,8 +62,8 @@ export const deleteCategory = createAsyncThunk(
 );
 
 // Category slice
-const categorySlice = createSlice({
-    name: 'category',
+const subcategorySlice = createSlice({
+    name: 'subcategory',
     initialState: {
         data: [],
         isLoading: false,
@@ -76,59 +72,58 @@ const categorySlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchCategoryData.pending, (state) => {
+            .addCase(fetchSubCategoryData.pending, (state) => {
                 state.isLoading = true;
                 state.error = null;
             })
-            .addCase(fetchCategoryData.fulfilled, (state, action) => {
+            .addCase(fetchSubCategoryData.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.data = action.payload || [];
+                state.data = action.payload || []; // Ensure payload is not undefined
             })
-            .addCase(fetchCategoryData.rejected, (state, action) => {
+            .addCase(fetchSubCategoryData.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.error.message;
             })
-            .addCase(addCategory.pending, (state) => {
+            .addCase(addSubCategory.pending, (state) => {
                 state.isLoading = true;
                 state.error = null;
             })
-            .addCase(addCategory.fulfilled, (state, action) => {
+            .addCase(addSubCategory.fulfilled, (state, action) => {
                 state.isLoading = false;
-                state.data = [...state.data, action.payload];
+                state.data = [...state.data, action.payload]; // Use spread operator to ensure immutability
             })
-            .addCase(addCategory.rejected, (state, action) => {
+            .addCase(addSubCategory.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.error.message;
             })
-            .addCase(editCategory.pending, (state) => {
+            .addCase(editSubCategory.pending, (state) => {
                 state.isLoading = true;
                 state.error = null;
             })
-            .addCase(editCategory.fulfilled, (state, action) => {
-                console.log(action, state, "action");
+            .addCase(editSubCategory.fulfilled, (state, action) => {
                 state.isLoading = false;
                 const index = state.data?.findIndex(category => category?._id === action?.payload?._id);
                 if (index !== -1) {
                     state.data[index] = action.payload;
                 }
             })
-            .addCase(editCategory.rejected, (state, action) => {
+            .addCase(editSubCategory.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.error.message;
             })
-            .addCase(deleteCategory.pending, (state) => {
+            .addCase(deleteSubCategory.pending, (state) => {
                 state.isLoading = true;
                 state.error = null;
             })
-            .addCase(deleteCategory.fulfilled, (state, action) => {
+            .addCase(deleteSubCategory.fulfilled, (state, action) => {
                 state.isLoading = false;
                 state.data = state.data?.filter(category => category?._id !== action?.payload?._id);
             })
-            .addCase(deleteCategory.rejected, (state, action) => {
+            .addCase(deleteSubCategory.rejected, (state, action) => {
                 state.isLoading = false;
                 state.error = action.error.message;
             });
     }
 });
 
-export default categorySlice.reducer;
+export default subcategorySlice.reducer;
