@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Subcategories = require('../models/subCategories.model')
 
 const listSubCategories = async (req, res) => {
@@ -171,36 +172,58 @@ const countActiveSubcategories = async (req, res) => {
         });
     }
 }
-const countProducts = async (req, res) => {
-    console.log("PPPPPPPPPmmmmm");
+const countInactiveSubcategories = async (req, res) => {
     try {
-        const countProducts = await Subcategories.aggregate([
-            {
-                $lookup: {
-                    from: "products",
-                    localField: "_id",
-                    foreignField: "subcategory",
-                    as: "TotalProducts"
-                }
-            },
-            {
-                $unwind: {
-                    path: "$TotalProducts",
-                }
-            },
-            {
-                $group: {
-                    _id: "$TotalProducts.subcategory",
-                    "Subcategory":
-                    {
-                        $first: "$name"
-                    },
-                    "TotalSubcategory": {
-                        $sum: 1
+        const countInactiveSubcategories = await Subcategories.aggregate([
+            { $match: { is_active: false } },
+            { $group: { _id: null, count: { $sum: 1 } } }
+        ]);
+        console.log(countInactiveSubcategories);
+
+        res.status(200).json({
+            success: true,
+            message: "Categories Data fetched.",
+            data: res.json(countInactiveSubcategories)
+
+        });
+    } catch (error) {
+        res.status(500).json({
+            succsess: false,
+            error: 'internal network error' + error.message
+        });
+    }
+}
+const countProducts = async (req, res) => {
+    try {
+        const countProducts = await Subcategories.aggregate(
+            [
+                {
+                    $lookup: {
+                        from: "products",
+                        localField: "_id",
+                        foreignField: "subcategory",
+                        as: "TotalProducts"
+                    }
+                },
+                {
+                    $unwind: {
+                        path: "$TotalProducts",
+                    }
+                },
+                {
+                    $group: {
+                        _id: "$TotalProducts.subcategory",
+                        "Subcategory":
+                        {
+                            $first: "$name"
+                        },
+                        "TotalProducts": {
+                            $sum: 1
+                        }
                     }
                 }
-            }
-        ]);
+            ]
+        );
         res.status(200).json({
             success: true,
             message: "sub Categories Data fetched.",
@@ -214,6 +237,96 @@ const countProducts = async (req, res) => {
         });
     }
 }
+const parentOfSubcategory = async (req, res) => {
+    console.log("PPPPPPPPPmmmmm", req.params.category_id);
+    try {
+        const countProducts = await Subcategories.aggregate([
+            {
+                $match: { category_id: new mongoose.Types.ObjectId(req.params.category_id) }
+            },
+            {
+                $lookup: {
+                    from: "categories",
+                    localField: "category_id",
+                    foreignField: "_id",
+                    as: "categories"
+                }
+            },
+            {
+                $unwind: "$categories",
+            },
+            {
+                $group: {
+                    _id: "$categories._id",
+                    name: {
+                        $first: "$categories.name"
+                    },
+                    "subcategoryName": { $push: "$name" }
+                }
+            }
+        ]);
+        console.log(countProducts);
+        res.status(200).json({
+            success: true,
+            message: "Subcategories data fetched.",
+            data: countProducts
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: 'Internal network error: ' + error.message
+        });
+    }
+};
+const mostProducts = async (req, res) => {
+    try {
+        const mostProducts = await Subcategories.aggregate(
+            [
+                {
+                    $lookup: {
+                        from: "products",
+                        localField: "_id",
+                        foreignField: "subcategory",
+                        as: "products"
+                    }
+                },
+                {
+                    $unwind: "$products",
+                },
+                {
+                    $group: {
+                        _id: "$_id",
+                        name: {
+                            $first: "$name"
+                        },
+                        "productyName": { $push: "$products.name" },
+                        count: {
+                            $sum: 1
+                        }
+                    },
+                },
+                {
+                    $sort: {
+                        count: -1
+                    }
+                },
+                {
+                    $limit: 3
+                }
+            ]);
+        console.log(mostProducts);
+        res.status(200).json({
+            success: true,
+            message: "Subcategories data fetched.",
+            data: mostProducts
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            error: 'Internal network error: ' + error.message
+        });
+    }
+};
 
 module.exports = {
     listSubCategories,
@@ -223,5 +336,8 @@ module.exports = {
     editSubCategories,
     getCategories,
     countProducts,
-    countActiveSubcategories
+    countActiveSubcategories,
+    countInactiveSubcategories,
+    parentOfSubcategory,
+    mostProducts
 }

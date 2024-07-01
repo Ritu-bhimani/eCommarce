@@ -9,4 +9,4 @@ const connectDB = async () => {
         console.log("databaseError:", error)
     }
 }
-module.exports=connectDB
+module.exports = connectDB

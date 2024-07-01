@@ -39,4 +39,16 @@ routes.get(
     '/count-active',
     subCategoriesController.countActiveSubcategories
 )
+routes.get(
+    '/inactive',
+    subCategoriesController.countInactiveSubcategories
+)
+routes.get(
+    '/parent-of-subcategory/:category_id',
+    subCategoriesController.parentOfSubcategory
+)
+routes.get(
+    '/most-products',
+    subCategoriesController.mostProducts
+)
 module.exports = routes
