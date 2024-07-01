@@ -25,8 +25,6 @@ const listCategories = async (req, res) => {
     }
 
 }
-
-
 const getCategory = async (req, res) => {
     try {
         const category = await Categories.findById(req.params.id)
@@ -167,10 +165,200 @@ const putCategory = async (req, res) => {
     }
 
 }
+
+
+const countSubcategories = async (req, res) => {
+    try {
+        const countSubCategories = await Categories.aggregate([
+            {
+                $lookup: {
+                    from: "subcategories",
+                    localField: "_id",
+                    foreignField: "category_id",
+                    as: "TotalSubcategory"
+                }
+            },
+            {
+                $unwind: {
+                    path: "$TotalSubcategory",
+                }
+            },
+            {
+                $group: {
+                    _id: "$TotalSubcategory.category_id",
+                    "category":
+                    {
+                        $first: "$name"
+                    },
+                    "TotalSubcategory": {
+                        $sum: 1
+                    }
+                }
+            }
+        ]);
+        res.status(200).json({
+            success: true,
+            message: "Categories Data fetched.",
+            data: countSubCategories
+
+        });
+    } catch (error) {
+        res.status(500).send(error);
+    }
+}
+const countActiveCategories = async (req, res) => {
+    try {
+        const countActiveCategory = await Categories.aggregate(
+            [
+                { $match: { is_Active: true } },
+                { $group: { _id: null, count: { $sum: 1 } } }
+            ]);
+        console.log(countActiveCategory);
+
+        res.status(200).json({
+            success: true,
+            message: "Categories Data fetched.",
+            data: countActiveCategory
+
+        });
+    } catch (error) {
+        res.status(500).json({
+            succsess: false,
+            error: 'internal network error' + error.message
+        });
+    }
+}
+const countInactiveCategories = async (req, res) => {
+    try {
+        const countInactiveCategory = await Categories.aggregate(
+            [
+                {
+                    $match:
+                        { is_Active: false }
+                },
+                { $count: "TotalInActiveCount" }
+            ]);
+        console.log(countInactiveCategory);
+
+        res.status(200).json({
+            success: true,
+            message: "Categories Inactive Data fetched.",
+            data: countInactiveCategory
+
+        });
+    } catch (error) {
+        res.status(500).json({
+            succsess: false,
+            error: 'internal network error' + error.message
+        });
+    }
+}
+const mostPopularProducts = async (req, res) => {
+    try {
+        const mostPopularProducts = await Categories.aggregate(
+            [
+                {
+                    $lookup: {
+                        from: "products",
+                        localField: "_id",
+                        foreignField: "category",
+                        as: "products"
+                    }
+                },
+                {
+                    $unwind: {
+                        path: "$products"
+                    }
+                },
+                {
+                    $group: {
+                        _id: "$_id",
+                        name: { $first: "$name" },
+                        "ProductName": {
+                            $push: "$products.name"
+                        },
+                        count: {
+                            $sum: 1
+                        }
+                    }
+                },
+                {
+                    $sort: {
+                        count: -1
+                    }
+                }, {
+                    $limit: 3
+                }
+            ]);
+        console.log(mostPopularProducts);
+
+        res.status(200).json({
+            success: true,
+            message: "Categories most popular Data fetched.",
+            data: mostPopularProducts
+
+        });
+    } catch (error) {
+        res.status(500).json({
+            succsess: false,
+            error: 'internal network error' + error.message
+        });
+    }
+}
+const countProducts = async (req, res) => {
+    try {
+        const totalProducts = await Categories.aggregate(
+            [
+                {
+                    $lookup: {
+                        from: "products",
+                        localField: "_id",
+                        foreignField: "category",
+                        as: "products"
+                    }
+                },
+                {
+                    $unwind: {
+                        path: "$products"
+                    }
+                },
+                {
+                    $group: {
+                        _id: "$_id",
+                        name: { $first: "$name" },
+                        "ProductName": {
+                            $push: "$products.name"
+                        },
+                        count: {
+                            $sum: 1
+                        }
+                    }
+                }
+            ]);
+        console.log(totalProducts);
+
+        res.status(200).json({
+            success: true,
+            message: "Categories most popular Data fetched.",
+            data: totalProducts
+
+        });
+    } catch (error) {
+        res.status(500).json({
+            succsess: false,
+            error: 'internal network error' + error.message
+        });
+    }
+}
 module.exports = {
     listCategories,
     addCategory,
     deleteCategory,
     getCategory,
     putCategory,
+    countSubcategories,
+    countActiveCategories,
+    countInactiveCategories,
+    mostPopularProducts,
+    countProducts
 }

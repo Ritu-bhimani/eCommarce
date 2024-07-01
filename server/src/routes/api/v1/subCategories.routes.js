@@ -1,6 +1,9 @@
-const express=require('express')
+const express = require('express')
 const { subCategoriesController } = require('../../../controller')
-const routes=express.Router()
+const upload = require('../../../middleware/upload')
+
+
+const routes = express.Router()
 
 routes.get(
     '/list-subCategories',
@@ -16,6 +19,7 @@ routes.get(
 )
 routes.post(
     '/add-subCategories',
+    upload.single('sub_img'),
     subCategoriesController.addSubCategories
 )
 routes.delete(
@@ -27,4 +31,12 @@ routes.put(
     subCategoriesController.editSubCategories
 )
 
-module.exports=routes
+routes.get(
+    '/count-products',
+    subCategoriesController.countProducts
+)
+routes.get(
+    '/count-active',
+    subCategoriesController.countActiveSubcategories
+)
+module.exports = routes
